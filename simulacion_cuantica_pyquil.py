@@ -39,9 +39,11 @@ def generar_estado_inicial(cambiar):
     else:
         jugador_estados = ["00"]
 
+    # Amplitudes normales (igual para todos los estados)
     amplitud_premio = 1 / np.sqrt(3)
     amplitud_jugador = 1 / np.sqrt(len(jugador_estados))
 
+    # Construimos el estado completo
     for p in premio_estados:
         for j in jugador_estados:
             # Formamos el estado completo como j+p
@@ -60,6 +62,7 @@ def probabilidad_exito(estado_final):
     probs = np.abs(estado_final)**2
     exito = 0
 
+    # Recorremos todas las probabilidades de los 16 estados
     for idx, prob in enumerate(probs):
         bits = format(idx, '04b')
         jugador = bits[:2]

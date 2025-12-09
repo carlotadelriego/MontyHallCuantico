@@ -16,15 +16,15 @@ def jugar_monty_cuantico_con_medicion(cambiar: bool) -> bool:
     eleccion = 0
 
     # El presentador revela una puerta distinta de la elegida y sin premio
+    # Aquí se asume que la medición se produce antes de la decisión, lo que colapsa la superposición y vuelve el sistema clásico.
     opciones = [0, 1, 2]
     opciones.remove(eleccion)
-
     if premio in opciones:
         opciones.remove(premio)
-
     puerta_revelada = random.choice(opciones)
 
     # 2. Estrategia del jugador
+    # Si cambiar, elige la otra puerta que no ha sido revelada ni elegida
     if cambiar:
         opciones_restantes = [0, 1, 2]
         opciones_restantes.remove(eleccion)
@@ -32,6 +32,7 @@ def jugar_monty_cuantico_con_medicion(cambiar: bool) -> bool:
         eleccion = opciones_restantes[0]  # pasa a la otra puerta
 
     # 3. Resultado tras el colapso
+    # El jugador gana si su elección coincide con la puerta del premio
     return eleccion == premio
 
 

@@ -1,3 +1,4 @@
+# Simula el problema clásico de Monty Hall para comparar la probabilidad de ganar manteniendo o cambiando la elección inicial
 # importar librerías necesarias
 import random
 
@@ -34,6 +35,7 @@ def simular(num_partidas: int = 1000) -> tuple[float, float]:
     victorias_mantener = 0
     victorias_cambiar = 0
 
+    # Ejecutamos varias partidas para obtener estimaciones estables
     for _ in range(num_partidas):
         if jugar_montyhall(cambiar=False):
             victorias_mantener += 1
