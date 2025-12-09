@@ -32,7 +32,7 @@ def generar_estado_inicial(cambiar):
     estado = np.zeros(16, dtype=complex)
 
     # Estados posibles para el premio
-    premio_estados = ["00", "01", "10"]
+    premio_estados = ["00", "01", "10"] # no consideramos "11"
 
     if cambiar:
         jugador_estados = ["01", "10"]
@@ -64,14 +64,14 @@ def probabilidad_exito(estado_final):
 
     # Recorremos todas las probabilidades de los 16 estados
     for idx, prob in enumerate(probs):
-        bits = format(idx, '04b')
+        bits = format(idx, '04b') # representación binaria de 4 bits
         jugador = bits[:2]
         premio = bits[2:]
 
         # ignoramos estados 11
         if jugador == "11" or premio == "11":
             continue
-
+        # contamos éxito 
         if jugador == premio:
             exito += prob
 
